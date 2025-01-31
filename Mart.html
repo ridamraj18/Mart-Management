@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mart Management System</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Mart Management</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="showSection('products')">Products</a></li>
+                <li><a href="#" onclick="showSection('sales')">Sales</a></li>
+                <li><a href="#" onclick="showSection('inventory')">Inventory</a></li>
+                <li><a href="#" onclick="showSection('customers')">Customers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section">
+            <h2>Welcome to the Mart Management System</h2>
+            <p>Manage your mart's products, sales, inventory, and customers with ease!</p>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="content-section" style="display: none;">
+            <h2>Manage Products</h2>
+            <form id="product-form" onsubmit="event.preventDefault(); addOrUpdateProduct();">
+                <input type="text" id="product-name" placeholder="Product Name" required>
+                <input type="text" id="product-category" placeholder="Category" required>
+                <input type="number" id="product-price" placeholder="Selling Price (₹)" required>
+                <input type="number" id="product-cost-price" placeholder="Cost Price (₹)" required>
+                <input type="number" id="product-quantity" placeholder="Quantity" required>
+                <input type="text" id="product-supplier" placeholder="Supplier" required>
+                <input type="text" id="product-sku" placeholder="SKU" required>
+                <input type="text" id="product-description" placeholder="Description" required>
+                <button type="submit" id="add-product-btn">Add Product</button>
+            </form>
+            <div id="product-list"></div>
+        </section>
+
+        <!-- Sales Section -->
+        <section id="sales" class="content-section" style="display: none;">
+            <h2>Manage Sales</h2>
+            <form id="sale-form" onsubmit="event.preventDefault(); addSale();">
+                <select id="sale-product-name" required>
+                    <option value="" disabled selected>Select a product</option>
+                </select>
+                <input type="number" id="sale-quantity" placeholder="Quantity Sold" required>
+                <button type="submit">Add Sale</button>
+            </form>
+            <div id="sales-list"></div>
+        </section>
+
+        <!-- Inventory Section -->
+        <section id="inventory" class="content-section" style="display: none;">
+            <h2>Inventory Summary</h2>
+            <p>Total Stock: <span id="total-stock">0</span></p>
+            <p>Total Inventory Value: ₹<span id="total-inventory-value">0.00</span></p>
+            <h3>Stock Details:</h3>
+            <div id="stock-details"></div>
+            <h3>Profit/Loss Summary:</h3>
+            <p>Total Sales: ₹<span id="total-sales">0.00</span></p>
+            <p>Total Profit/Loss: ₹<span id="total-profit-loss">0.00</span></p>
+            <p id="profit-loss-status">Break Even</p>
+        </section>
+
+        <!-- Customer Section -->
+        <section id="customers" class="content-section" style="display: none;">
+            <h2>Manage Customers</h2>
+            <form id="customer-form" onsubmit="event.preventDefault(); addCustomer();">
+                <input type="text" id="customer-id" placeholder="Customer ID (Optional)">
+                <input type="text" id="customer-name" placeholder="Customer Name" required>
+                <input type="tel" id="customer-phone" placeholder="Phone Number" required pattern="[0-9]{10}">
+                <input type="email" id="customer-email" placeholder="Email" required>
+                <input type="text" id="customer-address" placeholder="Address" required>
+                <button type="submit">Add Customer</button>
+            </form>
+            <div id="customer-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mart Management System</p>
+    </footer>
+    <script src="./script.js" defer></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
